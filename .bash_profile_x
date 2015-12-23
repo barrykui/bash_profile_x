@@ -1,0 +1,102 @@
+alias vbp='vi ~/.bash_profile_x'
+alias sbp='source ~/.bash_profile_x'
+
+
+alias grep='grep --color=auto --exclude-dir=\.gitn'
+alias wl='wc -l'
+alias gin='grep -i -n'
+alias wz='w zhangqf'
+alias open='~/usr/bin/xdg-open'
+alias ll='ls -lh'
+alias lt='ls -lht'
+alias LS='ls'
+alias LL='ls -lh'
+alias LT='ls -lht'
+alias lt='ls -lht'
+alias ltr='ls -lhtr'
+alias ltf='ls -lht --time-style=full-iso'
+alias LS='ls'
+alias LL='ls -lh'
+alias LT='ls -lht'
+alias duh='du -sh'
+alias hd='head -n 25'
+alias ta='tail -n 25'
+alias hg="history | grep"
+alias pbd="ping www.baidu.com"
+
+
+alias tmuxsh='tmux split -h'
+alias tmuxsv='tmux split -v'
+alias pa='ps au'
+alias px='ps aux'
+alias pxg="ps aux | grep"
+
+
+alias gitc='git clone'
+alias jr='java -jar'
+
+alias xalog="fc -rnl | head -1 >> ~/xukui/.log"
+alias xclog="cat ~/xukui/.log"
+alias websiteget="wget --random-wait -r -p -e robots=off -U mozilla"
+alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+alias meminfo='free -m -l -t'
+
+
+lc() { ls $1|wl; }
+topg() { top -b -n 1|grep $1|wl; }
+# 
+
+xcate(){ cat $(which $1);}
+gmail() { curl -u "$1" --silent "https://mail.google.com/mail/feed/atom" | sed -e 's/<\/fullcount.*/\n/' | sed -e 's/.*fullcount>//';}
+# cd folder
+cde(){ cd $(dirname $(which $1)); }
+lse(){ ls $(dirname $(which $1)); }
+# tmux attach
+tm(){ tmux attach -t $1; }
+# count colum
+ncol(){ awk -F' ' '{print NF}' $1; }
+
+# count dir
+nfile(){ ls $1|wc -l; }
+nfilet(){ while(true) do nfile $1;sleep 3;done }
+o(){ while(true) do echo "=============";$1;sleep 1;done }
+
+#linenum file
+sedxk(){ head -$1 $2 |tail -1;}
+sedxkn(){ cols=$1; awk 'BEGIN{split("'$cols'",a,",");i=1;}NR==a[i]{print $1;i++;if(i>length(a)){exit;}}' $2;}
+# mkdir and cd into 
+mcd() { mkdir -p "$1"; cd "$1";}
+# cd and ls 
+cls() { cd "$1"; ls;}
+
+# kill pro with name
+killpname() { ps aux|grep $1|awk '{print $2;system("kill "$2)}'; }
+
+#bak
+backup() { cp "$1"{,.bak};}
+# extract all formated file
+ert() {
+    if [ -f $1 ] ; then
+      case $1 in
+        *.tar.bz2)   tar xjf $1     ;;
+        *.tar.gz)    tar xzf $1     ;;
+        *.bz2)       bunzip2 $1     ;;
+        *.rar)       unrar e $1     ;;
+        *.gz)        gunzip $1      ;;
+        *.tar)       tar xf $1      ;;
+        *.tbz2)      tar xjf $1     ;;
+        *.tgz)       tar xzf $1     ;;
+        *.zip)       unzip $1       ;;
+        *.Z)         uncompress $1  ;;
+        *.7z)        7z x $1        ;;
+        *)     echo "'$1' cannot be extracted via extr()" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
+
+
+# bioinformatics tools
+countfas() { awk 'BEGIN{l=0;}{if(substr($1,0,1)==">"){if(l!=0){ORS="\n";print l;};l=0;ORS="\t";print $1}else{l+=length($1)}}END{ORS="\n";print l;}' $1; }
+xcut() { from1=$1;to2=$2;file=$3;awk 'BEGIN{ORS="\t"}{for(i="'$from1'";i<="'$to2'";i++){if(i=="'$to2'")ORS="\n";print $i}}' $file;}
