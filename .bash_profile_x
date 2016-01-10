@@ -4,10 +4,6 @@ alias vbpx='vi ~/bash_profile_x/.bash_profile_x'
 alias sbpx='source ~/bash_profile_x/.bash_profile_x'
 
 ### very basic linux
-alias grep='grep --color=auto --exclude-dir=\.gitn'
-alias wl='wc -l'
-alias gin='grep -i -n'
-alias open='~/usr/bin/xdg-open'
 alias ll='ls -lh'
 alias lt='ls -lht'
 alias LS='ls'
@@ -27,13 +23,18 @@ alias pbd="ping www.baidu.com"
 alias pa='ps au'
 alias px='ps aux'
 alias pxg="ps aux | grep"
-
+alias grep='grep --color=auto --exclude-dir=\.gitn'
+alias wl='wc -l'
+alias gin='grep -i -n'
+alias dw='cd ~/Downloads'
+alias dc='cd ~/Documents'
 ### third party software
 alias tmuxsh='tmux split -h'
 alias tmuxsv='tmux split -v'
 alias cget='curl -O'
 alias gitc='git clone'
 alias jr='java -jar'
+alias open='~/usr/bin/xdg-open'
 
 alias xilog="fc -rnl | head -1 >> ~/x.log"
 alias xclog="cat ~/.xlog"
