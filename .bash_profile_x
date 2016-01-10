@@ -1,5 +1,7 @@
 alias vbp='vi ~/.bash_profile_x'
 alias sbp='source ~/.bash_profile_x'
+alias vbpx='vi ~/bash_profile_x/.bash_profile_x'
+alias sbpx='source ~/bash_profile_x/.bash_profile_x'
 
 ### very basic linux
 alias grep='grep --color=auto --exclude-dir=\.gitn'
