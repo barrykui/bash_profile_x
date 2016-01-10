@@ -1,3 +1,4 @@
+### local and remote bash_profile_x 
 alias vbp='vi ~/.bash_profile_x'
 alias sbp='source ~/.bash_profile_x'
 alias vbpx='vi ~/bash_profile_x/.bash_profile_x'
@@ -28,6 +29,8 @@ alias wl='wc -l'
 alias gin='grep -i -n'
 alias dw='cd ~/Downloads'
 alias dc='cd ~/Documents'
+alias ws='cd ~/Documents/workspace'
+alias sw='cd ~/Documents/software'
 ### third party software
 alias tmuxsh='tmux split -h'
 alias tmuxsv='tmux split -v'
