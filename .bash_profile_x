@@ -7,7 +7,6 @@ alias sbpx='source ~/bash_profile_x/.bash_profile_x'
 alias grep='grep --color=auto --exclude-dir=\.gitn'
 alias wl='wc -l'
 alias gin='grep -i -n'
-alias wz='w zhangqf'
 alias open='~/usr/bin/xdg-open'
 alias ll='ls -lh'
 alias lt='ls -lht'
@@ -36,8 +35,8 @@ alias cget='curl -O'
 alias gitc='git clone'
 alias jr='java -jar'
 
-alias xalog="fc -rnl | head -1 >> ~/xukui/.log"
-alias xclog="cat ~/xukui/.log"
+alias xilog="fc -rnl | head -1 >> ~/x.log"
+alias xclog="cat ~/.xlog"
 alias websiteget="wget --random-wait -r -p -e robots=off -U mozilla"
 alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 alias meminfo='free -m -l -t'
