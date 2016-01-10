@@ -52,8 +52,11 @@ gmail() { curl -u "$1" --silent "https://mail.google.com/mail/feed/atom" | sed -
 # cd folder
 cde(){ cd $(dirname $(which $1)); }
 lse(){ ls $(dirname $(which $1)); }
+
+## tmux
 # tmux attach
 tm(){ tmux attach -t $1; }
+tmprefix(){ tmux unbind C-b;tmux set -g prefix \`;tmux bind-key \` send-prefix;tmux set -g history-limit 1000000;}
 # count colum
 ncol(){ awk -F' ' '{print NF}' $1; }
 
@@ -103,4 +106,4 @@ countfas() { awk 'BEGIN{l=0;}{if(substr($1,0,1)==">"){if(l!=0){ORS="\n";print l;
 xcut() { from1=$1;to2=$2;file=$3;awk 'BEGIN{ORS="\t"}{for(i="'$from1'";i<="'$to2'";i++){if(i=="'$to2'")ORS="\n";print $i}}' $file;}
 ## get lincRNA from gff file 
 ## Ensembl_Danio_rerio.GRCz10.83.chr.gff3
-getlncRNAgff(){ awk 'BEGIN{a=0;}$3=="lincRNA_gene"{a=1}{if(a==1){b=substr($9,1,8);if(b=="ID=gene:" && $3!="lincRNA_gene")a=0;else print $0;}}' $1 }
+getlncRNAgff(){ awk 'BEGIN{a=0;}$3=="lincRNA_gene"{a=1}{if(a==1){b=substr($9,1,8);if(b=="ID=gene:" && $3!="lincRNA_gene")a=0;else print $0;}}' $1; }
