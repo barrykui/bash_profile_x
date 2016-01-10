@@ -1,7 +1,7 @@
 alias vbp='vi ~/.bash_profile_x'
 alias sbp='source ~/.bash_profile_x'
 
-
+### very basic linux
 alias grep='grep --color=auto --exclude-dir=\.gitn'
 alias wl='wc -l'
 alias gin='grep -i -n'
@@ -23,15 +23,14 @@ alias hd='head -n 25'
 alias ta='tail -n 25'
 alias hg="history | grep"
 alias pbd="ping www.baidu.com"
-
-
-alias tmuxsh='tmux split -h'
-alias tmuxsv='tmux split -v'
 alias pa='ps au'
 alias px='ps aux'
 alias pxg="ps aux | grep"
 
-
+### third party software
+alias tmuxsh='tmux split -h'
+alias tmuxsv='tmux split -v'
+alias cget='curl -O'
 alias gitc='git clone'
 alias jr='java -jar'
 
@@ -41,7 +40,7 @@ alias websiteget="wget --random-wait -r -p -e robots=off -U mozilla"
 alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 alias meminfo='free -m -l -t'
 
-
+### functions 
 lc() { ls $1|wl; }
 topg() { top -b -n 1|grep $1|wl; }
 # 
