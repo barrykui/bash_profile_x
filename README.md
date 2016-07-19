@@ -26,7 +26,7 @@ If it still dosen't work, use command:
 
 
 | Tool              | Description |
-| ----------------- |---------------------:|
+| ----------------- |:---------------------|
 |pxg python         |show the running python threads|
 |hg python          |grep history|
 |o ls               |loop excute your command |
