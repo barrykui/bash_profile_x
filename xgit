@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/git -c user.name="Xu Kui" -c user.email="xukui@tsinghua.edu.cn" "$@"
