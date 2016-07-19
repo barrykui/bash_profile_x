@@ -6,21 +6,22 @@ Alias and very useful and tiny command line tools in .bashrc
 
 ## Installation
 
-<code>$ cd 
-$ git clone https://github.com/barrykui/.bashrc_x
-$ vi ~/.bashrc
-</code>
+    $ cd 
+    $ git clone https://github.com/barrykui/.bashrc_x
+    $ vi ~/.bashrc
+
 add `~/.bashrc_x` to the environment `PATH`:
-<code> PATH=$PATH:~/.bashrc_x </code>
+    PATH=$PATH:~/.bashrc_x 
 then source your local `~/.bashrc` file,
-<code>$ source ~/.bashrc</code>
+    $ source ~/.bashrc
 
 If it still dosen't work, use command `bashx`.
 
 ## Tools
 
 
-^ tool      ^ description ^
+| Tool              | Description |
+| ----------------- |:---------------------:|
 |pxg python         |show the running python threads|
 |hg python          |grep history|
 |o ls               |loop excute your command |
