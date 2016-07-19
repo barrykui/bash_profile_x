@@ -1,18 +1,18 @@
-# .bashrc
+# xbash
 
 ## Introduction
 
-Alias and very useful and tiny command line tools in .bashrc 
+Xbash is a crowd of alias and tiny command line tools. 
 
 ## Installation
 
     $ cd 
-    $ git clone https://github.com/barrykui/.bashrc_x
+    $ git clone https://github.com/barrykui/.xbash
     $ vi ~/.bashrc
 
-add `~/.bashrc_x` to the environment `PATH`:
+add `~/.xbash` to the environment `PATH`:
 
-    PATH=$PATH:~/.bashrc_x 
+    export PATH=$PATH:~/.xbash 
 
 then source your local `~/.bashrc` file,
 
@@ -20,7 +20,7 @@ then source your local `~/.bashrc` file,
 
 If it still dosen't work, use command:
 
-    $ bashx
+    $ xbash
 
 ## Tools
 
