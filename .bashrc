@@ -1,8 +1,6 @@
 ### local and remote bash_profile_x 
-alias vbp='vi ~/.bash_profile_x'
-alias sbp='source ~/.bash_profile_x'
-alias vbpx='vi ~/bash_profile_x/.bash_profile_x'
-alias sbpx='source ~/bash_profile_x/.bash_profile_x'
+alias vxb='vi ~/xbash/.bashrc'
+alias sxb='source ~/xbash/.bashrc '
 
 ### very basic linux
 alias ll='ls -lh'
@@ -110,15 +108,17 @@ xcut() { from1=$1;to2=$2;file=$3;awk 'BEGIN{ORS="\t"}{for(i="'$from1'";i<="'$to2
 ## get lincRNA from gff file 
 ## Ensembl_Danio_rerio.GRCz10.83.chr.gff3
 getlncRNAgff(){ awk 'BEGIN{a=0;}$3=="lincRNA_gene"{a=1}{if(a==1){b=substr($9,1,8);if(b=="ID=gene:" && $3!="lincRNA_gene")a=0;else print $0;}}' $1; }
-renamedir(){
-from=$1;
-to=$2;
-patern=$3;
-for dirname in $patern
-do
-  newdir=${dirname/$from/$to}
-  mv $dirname $newdir
-  echo $dirname" --> "$newdir
 
-done
+## rename dir
+renamedir(){
+   from=$1;
+   to=$2;
+   patern=$3;
+   for dirname in $patern
+   do
+     newdir=${dirname/$from/$to}
+     mv $dirname $newdir
+     echo $dirname" --> "$newdir
+   
+   done
 }
