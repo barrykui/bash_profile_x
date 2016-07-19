@@ -11,17 +11,22 @@ Alias and very useful and tiny command line tools in .bashrc
     $ vi ~/.bashrc
 
 add `~/.bashrc_x` to the environment `PATH`:
+
     PATH=$PATH:~/.bashrc_x 
+
 then source your local `~/.bashrc` file,
+
     $ source ~/.bashrc
 
-If it still dosen't work, use command `bashx`.
+If it still dosen't work, use command:
+
+    $ bashx
 
 ## Tools
 
 
 | Tool              | Description |
-| ----------------- |:---------------------:|
+| ----------------- |---------------------:|
 |pxg python         |show the running python threads|
 |hg python          |grep history|
 |o ls               |loop excute your command |
