@@ -22,6 +22,18 @@ If it still dosen't work, use command:
 
     $ xbash
 
+
+For `.vimrc` file, just link the file:
+  
+    $ ln -s ~/xbash/.vimrc ~/.vimrc
+
+For `.tmux.conf` file, just link the file:
+  
+    $ cd ~/xbash/
+    $ git clone https://github.com/barrykui/.tmux.git
+    $ ln -s ~/xbash/.tmux/.tmux.conf ~/.tmux.conf
+
+
 ## Tools
 
 
