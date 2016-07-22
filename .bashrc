@@ -35,7 +35,7 @@ alias tmuxsv='tmux split -v'
 alias cget='curl -O'
 alias gitc='git clone'
 alias jr='java -jar'
-alias open='~/usr/bin/xdg-open'
+alias open='xdg-open'
 
 alias xilog="fc -rnl | head -1 >> ~/x.log"
 alias xclog="cat ~/.xlog"
@@ -109,6 +109,11 @@ xcut() { from1=$1;to2=$2;file=$3;awk 'BEGIN{ORS="\t"}{for(i="'$from1'";i<="'$to2
 ## Ensembl_Danio_rerio.GRCz10.83.chr.gff3
 getlncRNAgff(){ awk 'BEGIN{a=0;}$3=="lincRNA_gene"{a=1}{if(a==1){b=substr($9,1,8);if(b=="ID=gene:" && $3!="lincRNA_gene")a=0;else print $0;}}' $1; }
 
+# docker
+docker0(){ /usr/bin/open /Applications/Docker/Docker\ Quickstart\ Terminal.app; }
+docker1(){ docker run -it -v /Users/xukui/Documents/workspace:/root/share dl-docker:cpu bash; }
+docker2(){ docker run -it -p 8888:8888 -p 6006:6006 -v /Users/xukui/Documents/workspace:/root/share dl-docker:cpu bash; }
+
 ## rename dir
 renamedir(){
    from=$1;
@@ -121,4 +126,16 @@ renamedir(){
      echo $dirname" --> "$newdir
    
    done
+}
+netlogin(){ xdg-open "http://net.tsinghua.edu.cn"; }
+xmail(){
+if [ -d "$HOME/xbash/xmail" ];then
+#  echo "yes here!"
+  ~/xbash/xmail/xmail "$@"
+else
+  echo "not here! git clone https://github.com/barrykui/xmail.git"
+  cd ~/xbash/
+  git clone https://github.com/barrykui/xmail.git
+fi
+
 }
