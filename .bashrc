@@ -1,3 +1,9 @@
+# Copyright (c) 2016, BarryKui.
+#
+# bash profile configure
+# Tsinghua University
+# Modified at Aug 7 2016
+#
 ### local and remote bash_profile_x 
 alias vxb='vi ~/xbash/.bashrc'
 alias sxb='source ~/xbash/.bashrc '
