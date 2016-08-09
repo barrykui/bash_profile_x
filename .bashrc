@@ -1,11 +1,11 @@
 ## PATH
 export XBASH=$HOME/xbash
-PATH=$PATH:/usr/local/texlive/2015/bin/x86_64-darwin
-export PATH
 
 ### local and remote bash_profile_x 
-alias vxb='vi ~/xbash/.bashrc'
-alias sxb='source ~/xbash/.bashrc '
+alias vxb='vi $XBASH/.bashrc'
+alias sxb='source $XBASH/.bashrc '
+alias vxp='vi $XBASH/.path'
+alias vld='vi $XBASH/.ld_library_path'
 
 ### very basic linux
 alias ll='ls -lh'
@@ -148,10 +148,10 @@ fi
 
 
 
-XPATH=$(awk '$0!~/^#/{print}' $XBASH/.path|awk '!/^$/&&!a[$0]++'|awk 'BEGIN{a="/bin";}{a=a":"$0}END{print a}')
+XPATH=$(/usr/bin/awk '$0!~/^#/{print}' $XBASH/.path|/usr/bin/awk '!/^$/&&!a[$0]++'|/usr/bin/awk 'BEGIN{a="/bin";}{a=a":"$0}END{print a}')
 
 export PATH=$XPATH
-XLD=$(awk '$0!~/^#/{print}' $BASH/.ld_library_path|awk '!/^$/&&!a[$0]++'|awk 'BEGIN{a="/bin";}{a=a":"$0}END{print a}')
+XLD=$(/usr/bin/awk '$0!~/^#/{print}' $XBASH/.ld_library_path|/usr/bin/awk '!/^$/&&!a[$0]++'|/usr/bin/awk 'BEGIN{a="/bin";}{a=a":"$0}END{print a}')
 
 export LD_LIBRARY_PATH=$XLD
 
