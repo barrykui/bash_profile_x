@@ -1,3 +1,9 @@
+# Copyright (c) 2016, BarryKui.
+#
+# bash profile configure
+# Tsinghua University
+# Modified at Aug 9 2016
+#
 ## PATH
 export XBASH=$HOME/xbash
 
