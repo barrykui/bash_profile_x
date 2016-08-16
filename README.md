@@ -62,10 +62,7 @@ For `.tmux.conf` file, just link the file:
   - [ ] Use Tree LSTM in place of LSTM. [`Paper`](http://www.aclweb.org/anthology/P/P15/P15-1150.pdf) [`Code`](https://github.com/stanfordnlp/treelstm) [`Slides`](http://kaishengtai.github.io/static/slides/treelstm-acl2015.pdf)
 - [ ] Go through
 [`Penlight`](https://github.com/stevedonovan/Penlight) [`documentation`](http://stevedonovan.github.io/Penlight/api/manual/01-introduction.md.html)
-- [ ] Go through
-[`Moses`](https://github.com/Yonaba/Moses/blob/master/doc/tutorial.md)
-- [ ] Go through [`nn`](https://github.com/torch/nn) module documentation and check
-how some to the functionality is implemented
+
 
 
 
