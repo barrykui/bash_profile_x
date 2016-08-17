@@ -69,8 +69,18 @@ lse(){ ls $(dirname $(which $1)); }
 # tmux attach
 tm(){ tmux attach -t $1; }
 tmprefix(){ tmux unbind C-b;tmux set -g prefix \`;tmux bind-key \` send-prefix;tmux set -g history-limit 1000000;}
+
+
+## nvidia-smi
+# 
+alias nv='nvidia-smi'
+nvp(){ nvidia-smi|awk '$2=="Processes:"{aa=1;}{if(aa==1)print $0}';}
+nvpi(){ nvidia-smi|awk '{if(aa==1){print $0;aa=2;}}$2=="'$1'"{print $0;if(aa==0)aa=1}';}
+
 # count colum
 ncol(){ awk -F' ' '{print NF}' $1; }
+
+
 
 # count dir
 nfile(){ ls $1|wc -l; }
