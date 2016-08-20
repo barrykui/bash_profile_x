@@ -5,7 +5,7 @@
 # Modified at Aug 9 2016
 #
 ## PATH
-export XBASH=$HOME/xbash
+export XBASH=$HOME/kuixu/sw/xbash
 
 ### local and remote bash_profile_x 
 alias vxb='vi $XBASH/.bashrc'
@@ -76,7 +76,8 @@ tmprefix(){ tmux unbind C-b;tmux set -g prefix \`;tmux bind-key \` send-prefix;t
 alias nv='nvidia-smi'
 nvp(){ nvidia-smi|awk '$2=="Processes:"{aa=1;}{if(aa==1)print $0}';}
 nvpi(){ nvidia-smi|awk '{if(aa==1){print $0;aa=2;}}$2=="'$1'"{print $0;if(aa==0)aa=1}';}
-
+nvrp(){ nvidia-smi |awk 'v==2&&$0~/^\|/{print $0}$0=="|=============================================================================|"{v=2}';}
+nvrid(){ nvidia-smi |awk 'v==2&&$0~/^\|/{print $0}$0=="|=============================================================================|"{v=2}'|awk '{print $2}';}
 # count colum
 ncol(){ awk -F' ' '{print NF}' $1; }
 
@@ -164,12 +165,12 @@ fi
 
 
 
-XPATH=$(/usr/bin/awk '$0!~/^#/{print}' $XBASH/.path|/usr/bin/awk '!/^$/&&!a[$0]++'|/usr/bin/awk 'BEGIN{a="/bin";}{a=a":"$0}END{print a}')
+#XPATH=$(/usr/bin/awk '$0!~/^#/{print}' $XBASH/.path|/usr/bin/awk '!/^$/&&!a[$0]++'|/usr/bin/awk 'BEGIN{a="/bin";}{a=a":"$0}END{print a}')
 
-export PATH=$XPATH
-XLD=$(/usr/bin/awk '$0!~/^#/{print}' $XBASH/.ld_library_path|/usr/bin/awk '!/^$/&&!a[$0]++'|/usr/bin/awk 'BEGIN{a="/bin";}{a=a":"$0}END{print a}')
+#export PATH=$XPATH
+#XLD=$(/usr/bin/awk '$0!~/^#/{print}' $XBASH/.ld_library_path|/usr/bin/awk '!/^$/&&!a[$0]++'|/usr/bin/awk 'BEGIN{a="/bin";}{a=a":"$0}END{print a}')
 
-export LD_LIBRARY_PATH=$XLD
+#export LD_LIBRARY_PATH=$XLD
 
 
 
