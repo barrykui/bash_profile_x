@@ -5,7 +5,7 @@
 # Modified at Aug 9 2016
 #
 ## PATH
-export XBASH=$HOME/kuixu/sw/xbash
+export XBASH=$HOME/xbash
 
 ### local and remote bash_profile_x 
 alias vxb='vi $XBASH/.bashrc'
