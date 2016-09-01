@@ -4,8 +4,6 @@
 # Tsinghua University
 # Modified at Aug 9 2016
 #
-## PATH
-export XBASH=$HOME/xbash
 
 ### local and remote bash_profile_x 
 alias vxb='vi $XBASH/.bashrc'
@@ -153,12 +151,12 @@ renamedir(){
 }
 netlogin(){ xdg-open "http://net.tsinghua.edu.cn"; }
 xmail(){
-if [ -d "$HOME/xbash/xmail" ];then
+if [ -d "$XBASH/xmail" ];then
 #  echo "yes here!"
-  ~/xbash/xmail/xmail "$@"
+  $XBASH/xmail/xmail "$@"
 else
   echo "not here! git clone https://github.com/barrykui/xmail.git"
-  cd ~/xbash/
+  cd $XBASH/
   git clone https://github.com/barrykui/xmail.git
 fi
 

@@ -12,7 +12,11 @@ Xbash is a crowd of alias and tiny command line tools.
 
 add `~/.xbash` to the environment `PATH`:
 
-    export PATH=$PATH:~/.xbash 
+    export XBASH=$HOME/kuixu/sw/xbash
+    source $XBASH/.bashrc
+    export PATH=$PATH:$XBASH
+
+   
 
 then source your local `~/.bashrc` file,
 
