@@ -48,7 +48,7 @@ For `.tmux.conf` file, just link the file:
 |pdbpath 3jb1       |print the full path of a PDB file |
 |ert  a.tar.gz      |extraction king |
 |xmail -u xx@x.com -s “bowtie finished”  | email in command line |  
-
+|xgpu               |print the free gpu id|
 
 ##### TODO
 - [x] xbash not work, bug should be fired;
