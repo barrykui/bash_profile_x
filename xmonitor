@@ -1,0 +1,26 @@
+#!/bin/bash
+
+email="xukui@tsinghua.edu.cn"
+#email="xukui.cs@gmail.com"
+
+
+
+source ~/.bashrc
+
+
+
+gpuHistory=0
+nvp(){ nvidia-smi|awk '$2=="Processes:"{aa=1;}{if(aa==1)print $0}';}
+while :
+do 
+    a=$(xgpu|wc -l)
+    if [ ! $a = $gpuHistory ];then
+        msg=$(nvp)
+        #echo $msg
+        $XBASH/xmail/xmail -u $email -s "GPU Reports: $a" -m "<html><a>free GPU:$a</a><div>$msg</div></html>"
+        gpuHistory=$a
+    fi
+    date=$(date "+%Y-%m-%d %H:%M:%S")
+    echo "["$date"]: "$a
+    sleep 10
+done
