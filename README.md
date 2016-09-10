@@ -53,6 +53,16 @@ For `.tmux.conf` file, just link the file:
 |ert  a.tar.gz      |extraction king |
 |xmail -u xx@x.com -s “bowtie finished”  | email in command line |  
 |xgpu               |print the free gpu id|
+|xmonitor           |GPU monitor|
+|xparallel.sh       |A tiny parallel framework|
+
+## Parallel Soulution
+
+    - [xparallel.sh](https://github.com/barrykui/xbash/blob/master/xparallel.sh)
+    - [Concu]()
+    - [parallel](https://www.gnu.org/software/parallel/)
+
+
 
 ##### TODO
 - [x] xbash not work, bug should be fired;
