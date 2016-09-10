@@ -1,11 +1,18 @@
 #!/bin/bash
+# Copyright (c) 2016, BarryKui.
+#
+# bash profile configure
+# Tsinghua University
+# Modified at Aug 9 2016
+#
 
-#### User Code Region###
+
+#### User Code Region 1 ###
 faDir=$1
 
 # according to your computer
 SEND_THREAD_NUM=60
-#######################
+###########################
 
 tmp_fifofile="/tmp/$$.fifo"
 mkfifo "$tmp_fifofile"
