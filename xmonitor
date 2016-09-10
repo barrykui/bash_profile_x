@@ -1,9 +1,11 @@
 #!/bin/bash
-
-email="xukui@tsinghua.edu.cn"
-#email="xukui.cs@gmail.com"
-
-
+# Copyright (c) 2016, BarryKui.
+#
+# bash profile configure
+# Tsinghua University
+# Modified at Aug 9 2016
+#
+email="xukui.cs@gmail.com"
 
 source ~/.bashrc
 
