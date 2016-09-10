@@ -58,9 +58,9 @@ For `.tmux.conf` file, just link the file:
 
 ## Parallel Soulution
 
-    - [xparallel.sh](https://github.com/barrykui/xbash/blob/master/xparallel.sh)
-    - [Concu]()
-    - [parallel](https://www.gnu.org/software/parallel/)
+- [`xparallel.sh`](https://github.com/barrykui/xbash/blob/master/xparallel.sh)
+- [`Concu`](https://github.com/barrykui/Concu)
+- [`GNU Parallel`](https://www.gnu.org/software/parallel/)
 
 
 
