@@ -66,14 +66,7 @@ For `.tmux.conf` file, just link the file:
 
 ##### TODO
 - [x] xbash not work, bug should be fired;
-- [x] more usefull tools should be added in.
-  - [x] Read and process process data as needed by the network.
-  - [x] Read [`Learning Phrase Representations using RNN Encoder–Decoder
-  for Statistical Machine Translation`](http://arxiv.org/pdf/1406.1078.pdf) and
-  implement a GRU.
-  - [x] Read [`LSTM: A Search Space Odyssey`](http://arxiv.org/pdf/1503.04069v1.pdf)
-  and implement LSTM.
-  - [ ] Use Tree LSTM in place of LSTM. [`Paper`](http://www.aclweb.org/anthology/P/P15/P15-1150.pdf) [`Code`](https://github.com/stanfordnlp/treelstm) [`Slides`](http://kaishengtai.github.io/static/slides/treelstm-acl2015.pdf)
+- [ ] .vim folder should be committed to here;    
 - [ ] Go through
 [`Penlight`](https://github.com/stevedonovan/Penlight) [`documentation`](http://stevedonovan.github.io/Penlight/api/manual/01-introduction.md.html)
 
