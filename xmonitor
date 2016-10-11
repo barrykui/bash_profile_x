@@ -17,10 +17,10 @@ do
     if [ ! $a = $gpuHistory ];then
         msg=$(nvp)
         #echo $msg
-        $XBASH/xmail/xmail -u $email -s "GPU Reports: $a" -m "<html><a>free GPU:$a</a><div>$msg</div></html>"
+        #$XBASH/xmail/xmail -u $email -s "GPU Reports: $a" -m "<html><a>free GPU:$a</a><div>$msg</div></html>"
         gpuHistory=$a
     fi
     date=$(date "+%Y-%m-%d %H:%M:%S")
     echo "["$date"]: "$a
-    sleep 10
+    sleep 2
 done
