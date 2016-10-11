@@ -38,7 +38,9 @@ alias dw='cd ~/Downloads'
 alias dc='cd ~/Documents'
 alias ws='cd ~/Documents/workspace'
 alias sw='cd ~/Documents/software'
-### third party software
+alias catdisk='sudo lshw -class disk -class storage'
+
+## third party software
 alias tmuxsh='tmux split -h'
 alias tmuxsv='tmux split -v'
 alias cget='curl -O'
