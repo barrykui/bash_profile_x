@@ -133,6 +133,10 @@ xcut() { from1=$1;to2=$2;file=$3;awk 'BEGIN{ORS="\t"}{for(i="'$from1'";i<="'$to2
 ## Ensembl_Danio_rerio.GRCz10.83.chr.gff3
 getlncRNAgff(){ awk 'BEGIN{a=0;}$3=="lincRNA_gene"{a=1}{if(a==1){b=substr($9,1,8);if(b=="ID=gene:" && $3!="lincRNA_gene")a=0;else print $0;}}' $1; }
 
+
+overlap1() { awk 'NR==FNR{a[$1]=1}NR>FNR{if(a[$1]==1)print $0}' $1 $2|wc -l;}
+overlap4() { awk 'NR==FNR{a[$4]=1}NR>FNR{if(a[$4]==1)print $0}' $1 $2|wc -l;}
+
 # docker
 docker0(){ /usr/bin/open /Applications/Docker/Docker\ Quickstart\ Terminal.app; }
 docker1(){ docker run -it -v /Users/xukui/Documents/workspace:/root/share dl-docker:cpu bash; }
@@ -164,6 +168,31 @@ fi
 
 }
 
+piptf9(){
+    sudo rm /usr/local/cuda
+    sudo ln -sf /usr/local/cuda-7.5 /usr/local/cuda
+    export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.9.0-cp27-none-linux_x86_64.whl
+    sudo pip install --upgrade $TF_BINARY_URL --no-deps
+    python -c "import tensorflow;print(tensorflow.__version__)"
+    CUDA_VISIBLE_DEVICES=3 python /data/kuixu/exper/deeprbp/lstm/imdb_cnn.py
+}
+piptf10(){
+    sudo rm /usr/local/cuda
+    sudo ln -sf /usr/local/cuda-7.5_5103 /usr/local/cuda
+    export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.10.0-cp27-none-linux_x86_64.whl
+    #export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.11.0rc2-cp27-none-linux_x86_64.whl
+    sudo pip install --upgrade $TF_BINARY_URL --no-deps
+    python -c "import tensorflow;print(tensorflow.__version__)"
+    CUDA_VISIBLE_DEVICES=3 python /data/kuixu/exper/deeprbp/lstm/imdb_cnn.py
+}
+piptf11(){
+    sudo rm /usr/local/cuda
+    sudo ln -sf /usr/local/cuda-8.0 /usr/local/cuda
+    export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.11.0rc2-cp27-none-linux_x86_64.whl
+    sudo pip install --upgrade $TF_BINARY_URL
+    python -c "import tensorflow;print(tensorflow.__version__)"
+    CUDA_VISIBLE_DEVICES=3 python /data/kuixu/exper/deeprbp/lstm/imdb_cnn.py
+}
 
 
 
