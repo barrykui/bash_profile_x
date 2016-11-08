@@ -156,6 +156,17 @@ renamedir(){
    done
 }
 netlogin(){ xdg-open "http://net.tsinghua.edu.cn"; }
+
+
+## software installation and configure
+
+# tmux
+tmuxins(){
+  ln -sf $XBASH/.tmux.conf ~/.tmux.conf
+  ln -sf $XBASH/.tmux ~/.tmux
+
+}
+
 xmail(){
 if [ -d "$XBASH/xmail" ];then
 #  echo "yes here!"
