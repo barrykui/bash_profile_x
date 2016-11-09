@@ -1,60 +1,56 @@
+
 set nu
-"```vim
+"``vim
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
+"" set the runtime path to include Vundle and initialize
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+"alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'bundle/Vundle.vim'
+"Plugin 'bundle/Vundle.vim'
 "Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
+"Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+"Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
 "Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
-Plugin 'user/L9', {'name': 'newL9'}
+"Plugin 'user/L9', {'name': 'newL9'}
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+"call vundle#end()            " required
+"filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginInstall    - installs plugins; append `!` to update or just
+":PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+"auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "```
 
 
-
-
-
-" TODO: http://stackoverflow.com/questions/95072/what-are-your-favorite-vim-tricks/225852#225852
-
-" General "{{{
 set nocompatible  " disable vi compatibility.
 set history=256  " Number of things to remember in history.
 set autowrite  " Writes on make/shell commands
-set autoread  
+set autoread
 set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
 set clipboard+=unnamed  " Yanks go on clipboard instead.
 set pastetoggle=<F10> "  toggle between paste and normal: for 'safer' pasting from keyboard
@@ -65,13 +61,15 @@ set modelines=5 " default numbers of lines to read for modeline instructions
 " Backup
 set nowritebackup
 set nobackup
-set directory=/tmp// " prepend(^=) $HOME/.tmp/ to default path; use full path as backup filename(//)
+set directory=/tmp// " prepend(^=) $HOME/.tmp/ to default path; use full
+"path as backup filename(//)
 " Buffers
-set hidden " The current buffer can be put to the background without writing to disk
+set hidden " The current buffer can be put to the background without writing
+"to disk
 " Match and search
 set hlsearch    " highlight search
 set ignorecase  " Do case in sensitive matching with
-set smartcase		" be sensitive when there's a capital letter
+set smartcase   " be sensitive when there's a capital letter
 set incsearch   "
 " "}}}
 
@@ -81,10 +79,10 @@ set fo-=r " Do not automatically insert a comment leader after an enter
 set fo-=t " Do no auto-wrap text using textwidth (does not apply to comments)
 
 set nowrap
-set textwidth=0		" Don't wrap lines by default
+set textwidth=0   " Don't wrap lines by default
 set wildmode=longest,list " At command line, complete longest common string, then list alternatives.
 
-set backspace=indent,eol,start	" more powerful backspacing
+set backspace=indent,eol,start  " more powerful backspacing
 
 set tabstop=2    " Set the default tabstop
 set softtabstop=2
@@ -99,9 +97,9 @@ set cinwords=if,else,while,do,for,switch,case
 
 syntax on               " enable syntax
 filetype plugin indent on             " Automatically detect file types.
-" "}}}
+""}}}
 
-" Visual "{{{
+"" Visual "{{{
 set nonumber  " Line numbers off
 set showmatch  " Show matching brackets.
 set matchtime=5  " Bracket blinking.
@@ -140,12 +138,13 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru}     set ft=rub
 au BufRead,BufNewFile {*.md,*.mkd,*.markdown}                         set ft=markdown
 au BufRead,BufNewFile {COMMIT_EDITMSG}                                set ft=gitcommit
 
-au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal g'\"" | endif " restore position in file
+"au BufReadPost * if line("'\") > 0 && line("'\") <= line("$") | execute "normal g'\"" | endif " restore position in file
 " " }}}
 
 " Key mappings " {{{
 nnoremap <silent> <LocalLeader>rs :source ~/.vimrc<CR>
 nnoremap <silent> <LocalLeader>rt :tabnew ~/.vim/vimrc<CR>
+
 nnoremap <silent> <LocalLeader>re :e ~/.vim/vimrc<CR>
 nnoremap <silent> <LocalLeader>rd :e ~/.vim/ <CR>
 
@@ -158,7 +157,7 @@ nnoremap <silent> <LocalLeader>= YP
 " Buffers
 nnoremap <silent> <LocalLeader>- :bd<CR>
 " Split line(opposite to S-J joining line) 
-nnoremap <silent> <C-J> gEa<CR><ESC>ew 
+nnoremap <silent> <C-J> gEa<CR><ESC>ew
 
 " map <silent> <C-W>v :vnew<CR>
 " map <silent> <C-W>s :snew<CR>
@@ -175,15 +174,15 @@ vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
 "
 " show/Hide hidden Chars
-map <silent> <F12> :set invlist<CR>     
+map <silent> <F12> :set invlist<CR>
 "
 " generate HTML version current buffer using current color scheme
-map <silent> <LocalLeader>2h :runtime! syntax/2html.vim<CR> 
+map <silent> <LocalLeader>2h :runtime! syntax/2html.vim<CR>
 " " }}}
 
 set runtimepath+=~/.vim/vundle.git/ " my dev version
 
 " Plugins " {{{
-call vundle#rc()
+"call vundle#rc()
+")
 
-" trying this 
