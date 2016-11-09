@@ -160,6 +160,14 @@ netlogin(){ xdg-open "http://net.tsinghua.edu.cn"; }
 
 ## software installation and configure
 
+# THU login
+thuin(){
+  python $XBASH/thulogin/in.py $1 $2
+}
+thuout(){
+  python $XBASH/thulogin/out.py
+}
+
 # tmux
 tmuxins(){
   ln -sf $XBASH/.tmux.conf ~/.tmux.conf
