@@ -1,2 +1,8 @@
 #!/bin/bash
-source /home/scs4850/kuixu/sw/xbash/.bashrc
+git clone https://github.com/wklken/k-vim.git
+cd k-vim/
+sh -x install.sh
+
+source ~/xbash/.bashrc
+
+
