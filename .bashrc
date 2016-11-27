@@ -124,7 +124,19 @@ ert() {
          echo "'$1' is not a valid file"
      fi
 }
-
+## rename dir
+renamedir(){
+   from=$1;
+   to=$2;
+   patern=$3;
+   for dirname in $patern
+   do
+     newdir=${dirname/$from/$to}
+     mv $dirname $newdir
+     echo $dirname" --> "$newdir
+   
+   done
+}
 
 # bioinformatics tools
 countfas() { awk 'BEGIN{l=0;}{if(substr($1,0,1)==">"){if(l!=0){ORS="\n";print l;};l=0;ORS="\t";print $1}else{l+=length($1)}}END{ORS="\n";print l;}' $1; }
@@ -142,20 +154,9 @@ docker0(){ /usr/bin/open /Applications/Docker/Docker\ Quickstart\ Terminal.app; 
 docker1(){ docker run -it -v /Users/xukui/Documents/workspace:/root/share dl-docker:cpu bash; }
 docker2(){ docker run -it -p 8888:8888 -p 6006:6006 -v /Users/xukui/Documents/workspace:/root/share dl-docker:cpu bash; }
 
-## rename dir
-renamedir(){
-   from=$1;
-   to=$2;
-   patern=$3;
-   for dirname in $patern
-   do
-     newdir=${dirname/$from/$to}
-     mv $dirname $newdir
-     echo $dirname" --> "$newdir
-   
-   done
-}
+
 netlogin(){ xdg-open "http://net.tsinghua.edu.cn"; }
+
 
 
 ## software installation and configure
@@ -222,5 +223,6 @@ piptf11(){
 
 #export LD_LIBRARY_PATH=$XLD
 
-
+## macOS 
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
