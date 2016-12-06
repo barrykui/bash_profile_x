@@ -215,7 +215,7 @@ piptf11(){
 }
 
 
-
+dockerrun(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk dl-docker:cpu bash }
 #XPATH=$(/usr/bin/awk '$0!~/^#/{print}' $XBASH/.path|/usr/bin/awk '!/^$/&&!a[$0]++'|/usr/bin/awk 'BEGIN{a="/bin";}{a=a":"$0}END{print a}')
 
 #export PATH=$XPATH
