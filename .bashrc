@@ -85,6 +85,8 @@ cvd(){ CUDA_VISIBLE_DEVICES=$1; }
 # count colum
 ncol(){ awk -F' ' '{print NF}' $1; }
 
+# max min mean
+mmm(){ awk 'NR == 1 { max=$1; min=$1; sum=0 }  { if ($1>max) max=$1; if ($1<min) min=$1; sum+=$1;} END {printf "Min: %f\tMax: %f\tAverage: %f\n", min, max, sum/NR}'; }
 
 
 # count dir
