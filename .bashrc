@@ -74,11 +74,13 @@ tmprefix(){ tmux unbind C-b;tmux set -g prefix \`;tmux bind-key \` send-prefix;t
 ## nvidia-smi
 # 
 alias nv='nvidia-smi'
-nvp(){ nvidia-smi|awk '$2=="Processes:"{aa=1;}{if(aa==1)print $0}';}
+nvp(){ free -h; nvidia-smi|awk '$2=="Processes:"{aa=1;}{if(aa==1)print $0}';}
 nvpi(){ nvidia-smi|awk '{if(aa==1){print $0;aa=2;}}$2=="'$1'"{print $0;if(aa==0)aa=1}';}
 nvrp(){ nvidia-smi |awk 'v==2&&$0~/^\|/{print $0}$0=="|=============================================================================|"{v=2}';}
 nvrid(){ nvidia-smi |awk 'v==2&&$0~/^\|/{print $0}$0=="|=============================================================================|"{v=2}'|awk '{print $2}';}
 nvfreeid(){ nvidia-smi |awk 'v==2&&$0~/^\|/{print $0}$0=="|=============================================================================|"{v=2}'|awk '{r[$2]=1}END{for(i=0;i<=15;i+=1    )if(r[i]!=1)print i}';}
+cvd(){ CUDA_VISIBLE_DEVICES=$1; }
+
 
 # count colum
 ncol(){ awk -F' ' '{print NF}' $1; }
@@ -89,6 +91,7 @@ ncol(){ awk -F' ' '{print NF}' $1; }
 nfile(){ ls $1|wc -l; }
 nfilet(){ while(true) do nfile $1;sleep 3;done }
 o(){ while(true) do echo "=============";$1;sleep 1;done }
+o5(){ while(true) do echo "=============";$1;sleep 5;done }
 
 #linenum file
 sedxk(){ head -$1 $2 |tail -1;}
