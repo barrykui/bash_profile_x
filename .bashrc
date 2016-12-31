@@ -31,6 +31,7 @@ alias pbd="ping www.baidu.com"
 alias pa='ps au'
 alias px='ps aux'
 alias pxg="ps aux | grep"
+alias pxpg="ps axo stat,ppid,pid,comm| grep"
 alias grep='grep --color=auto --exclude-dir=\.gitn'
 alias wl='wc -l'
 alias gin='grep -i -n'
@@ -74,7 +75,7 @@ tmprefix(){ tmux unbind C-b;tmux set -g prefix \`;tmux bind-key \` send-prefix;t
 ## nvidia-smi
 # 
 alias nv='nvidia-smi'
-nvp(){ free -h; nvidia-smi|awk '$2=="Processes:"{aa=1;}{if(aa==1)print $0}';}
+nvp(){ nvidia-smi|awk '$2=="Processes:"{aa=1;}{if(aa==1)print $0}'; free -h; }
 nvpi(){ nvidia-smi|awk '{if(aa==1){print $0;aa=2;}}$2=="'$1'"{print $0;if(aa==0)aa=1}';}
 nvrp(){ nvidia-smi |awk 'v==2&&$0~/^\|/{print $0}$0=="|=============================================================================|"{v=2}';}
 nvrid(){ nvidia-smi |awk 'v==2&&$0~/^\|/{print $0}$0=="|=============================================================================|"{v=2}'|awk '{print $2}';}
