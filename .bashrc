@@ -60,6 +60,12 @@ lc() { ls $1|wl; }
 topg() { top -b -n 1|grep $1|wl; }
 # 
 
+## mount
+mountdisk(){ echo -e "1. mount;\n \
+    2. find the device(/dev/disk3s1) and the mount point(/Volumes/udisk) \
+    3. diskutil umount /Volumes/udisk\
+    4. sudo mount -t ntfs -o rw,nobrowse /dev/disk3s1 /Users/kuixu/udisk";}
+
 xcate(){ cat $(which $1);}
 gmail() { curl -u "$1" --silent "https://mail.google.com/mail/feed/atom" | sed -e 's/<\/fullcount.*/\n/' | sed -e 's/.*fullcount>//';}
 # cd folder
@@ -222,6 +228,7 @@ piptf11(){
 
 
 ddl(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk dl-docker:cpu bash; }
+dfdl(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk floydhub/dl-docker:cpu bash;
 dcaffe(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk caffe:cpu bash; }
 
 #XPATH=$(/usr/bin/awk '$0!~/^#/{print}' $XBASH/.path|/usr/bin/awk '!/^$/&&!a[$0]++'|/usr/bin/awk 'BEGIN{a="/bin";}{a=a":"$0}END{print a}')
