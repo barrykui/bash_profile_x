@@ -61,10 +61,11 @@ topg() { top -b -n 1|grep $1|wl; }
 # 
 
 ## mount
-mountdisk(){ echo -e "1. mount;\n \
-    2. find the device(/dev/disk3s1) and the mount point(/Volumes/udisk) \
-    3. diskutil umount /Volumes/udisk\
-    4. sudo mount -t ntfs -o rw,nobrowse /dev/disk3s1 /Users/kuixu/udisk";}
+xmount(){ echo -e "1. mount;\n \
+    2. find the device(/dev/disk3s1) and the mount point(/Volumes/udisk) \n \
+    3. diskutil umount /Volumes/udisk \n \
+    4. sudo mount -t ntfs -o rw,nobrowse /dev/disk3s1 /Users/kuixu/udisk \n";
+}
 
 xcate(){ cat $(which $1);}
 gmail() { curl -u "$1" --silent "https://mail.google.com/mail/feed/atom" | sed -e 's/<\/fullcount.*/\n/' | sed -e 's/.*fullcount>//';}
@@ -240,4 +241,3 @@ dcaffe(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk caffe:cpu b
 
 ## macOS 
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-
