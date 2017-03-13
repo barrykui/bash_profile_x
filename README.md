@@ -54,6 +54,7 @@ For `.tmux.conf` file, just link the file:
 |xmail -u xx@x.com -s “bowtie finished”  | email in command line |  
 |xgpu               |print the free gpu id|
 |xmonitor           |GPU monitor|
+|xgit	            |self git |
 |xparallel.sh       |A tiny parallel framework|
 
 ## Parallel Soulution
