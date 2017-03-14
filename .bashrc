@@ -31,6 +31,7 @@ alias pbd="ping www.baidu.com"
 alias pa='ps au'
 alias px='ps aux'
 alias pxg="ps aux | grep"
+alias pxpg="ps axo stat,ppid,pid,comm| grep"
 alias grep='grep --color=auto --exclude-dir=\.gitn'
 alias wl='wc -l'
 alias gin='grep -i -n'
@@ -59,6 +60,13 @@ lc() { ls $1|wl; }
 topg() { top -b -n 1|grep $1|wl; }
 # 
 
+## mount
+xmount(){ echo -e "1. mount;\n \
+    2. find the device(/dev/disk3s1) and the mount point(/Volumes/udisk) \n \
+    3. diskutil umount /Volumes/udisk \n \
+    4. sudo mount -t ntfs -o rw,nobrowse /dev/disk3s1 /Users/kuixu/udisk \n";
+}
+
 xcate(){ cat $(which $1);}
 gmail() { curl -u "$1" --silent "https://mail.google.com/mail/feed/atom" | sed -e 's/<\/fullcount.*/\n/' | sed -e 's/.*fullcount>//';}
 # cd folder
@@ -74,21 +82,26 @@ tmprefix(){ tmux unbind C-b;tmux set -g prefix \`;tmux bind-key \` send-prefix;t
 ## nvidia-smi
 # 
 alias nv='nvidia-smi'
-nvp(){ nvidia-smi|awk '$2=="Processes:"{aa=1;}{if(aa==1)print $0}';}
+nvp(){ nvidia-smi|awk '$2=="Processes:"{aa=1;}{if(aa==1)print $0}'; free -h; }
 nvpi(){ nvidia-smi|awk '{if(aa==1){print $0;aa=2;}}$2=="'$1'"{print $0;if(aa==0)aa=1}';}
 nvrp(){ nvidia-smi |awk 'v==2&&$0~/^\|/{print $0}$0=="|=============================================================================|"{v=2}';}
 nvrid(){ nvidia-smi |awk 'v==2&&$0~/^\|/{print $0}$0=="|=============================================================================|"{v=2}'|awk '{print $2}';}
 nvfreeid(){ nvidia-smi |awk 'v==2&&$0~/^\|/{print $0}$0=="|=============================================================================|"{v=2}'|awk '{r[$2]=1}END{for(i=0;i<=15;i+=1    )if(r[i]!=1)print i}';}
+cvd(){ CUDA_VISIBLE_DEVICES=$1; }
+
 
 # count colum
 ncol(){ awk -F' ' '{print NF}' $1; }
 
+# max min mean
+mmm(){ awk 'NR == 1 { max=$1; min=$1; sum=0 }  { if ($1>max) max=$1; if ($1<min) min=$1; sum+=$1;} END {printf "Min: %f\tMax: %f\tAverage: %f\n", min, max, sum/NR}'; }
 
 
 # count dir
 nfile(){ ls $1|wc -l; }
 nfilet(){ while(true) do nfile $1;sleep 3;done }
 o(){ while(true) do echo "=============";$1;sleep 1;done }
+o5(){ while(true) do echo "=============";$1;sleep 5;done }
 
 #linenum file
 sedxk(){ head -$1 $2 |tail -1;}
@@ -124,7 +137,19 @@ ert() {
          echo "'$1' is not a valid file"
      fi
 }
-
+## rename dir
+renamedir(){
+   from=$1;
+   to=$2;
+   patern=$3;
+   for dirname in $patern
+   do
+     newdir=${dirname/$from/$to}
+     mv $dirname $newdir
+     echo $dirname" --> "$newdir
+   
+   done
+}
 
 # bioinformatics tools
 countfas() { awk 'BEGIN{l=0;}{if(substr($1,0,1)==">"){if(l!=0){ORS="\n";print l;};l=0;ORS="\t";print $1}else{l+=length($1)}}END{ORS="\n";print l;}' $1; }
@@ -142,20 +167,9 @@ docker0(){ /usr/bin/open /Applications/Docker/Docker\ Quickstart\ Terminal.app; 
 docker1(){ docker run -it -v /Users/xukui/Documents/workspace:/root/share dl-docker:cpu bash; }
 docker2(){ docker run -it -p 8888:8888 -p 6006:6006 -v /Users/xukui/Documents/workspace:/root/share dl-docker:cpu bash; }
 
-## rename dir
-renamedir(){
-   from=$1;
-   to=$2;
-   patern=$3;
-   for dirname in $patern
-   do
-     newdir=${dirname/$from/$to}
-     mv $dirname $newdir
-     echo $dirname" --> "$newdir
-   
-   done
-}
+
 netlogin(){ xdg-open "http://net.tsinghua.edu.cn"; }
+
 
 
 ## software installation and configure
@@ -219,6 +233,15 @@ updlan(){
   /usr/bin/open lantern-installer-beta.dmg
   #rm lantern-installer-beta.dmg
 }
+ddl(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk dl-docker:cpu bash; }
+dfdl(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk floydhub/dl-docker:cpu bash;
+dcaffe(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk caffe:cpu bash; }
+
+### network
+netproxyon(){ networksetup -setsocksfirewallproxy "Wi-Fi" "url" "port";}
+netproxyoff(){ networksetup -setsocksfirewallproxystate "Wi-Fi" off;}
+netlist(){ networksetup -listnetworkserviceorder;}
+
 #XPATH=$(/usr/bin/awk '$0!~/^#/{print}' $XBASH/.path|/usr/bin/awk '!/^$/&&!a[$0]++'|/usr/bin/awk 'BEGIN{a="/bin";}{a=a":"$0}END{print a}')
 
 #export PATH=$XPATH
@@ -226,5 +249,5 @@ updlan(){
 
 #export LD_LIBRARY_PATH=$XLD
 
-
-
+## macOS 
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"

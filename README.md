@@ -54,6 +54,7 @@ For `.tmux.conf` file, just link the file:
 |xmail -u xx@x.com -s “bowtie finished”  | email in command line |  
 |xgpu               |print the free gpu id|
 |xmonitor           |GPU monitor|
+|xgit	            |self git |
 |xparallel.sh       |A tiny parallel framework|
 
 ## Parallel Soulution
@@ -68,6 +69,7 @@ For `.tmux.conf` file, just link the file:
 - [x] xbash not work, bug should be fired;
 - [ ] .vim folder should be committed to here;    
 - [ ] Go through
+- [ ] a good google hosts
 [`Penlight`](https://github.com/stevedonovan/Penlight) [`documentation`](http://stevedonovan.github.io/Penlight/api/manual/01-introduction.md.html)
 
 
