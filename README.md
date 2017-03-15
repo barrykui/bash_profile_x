@@ -71,7 +71,6 @@ For `.tmux.conf` file, just link the file:
 - [x] xbash not work, bug should be fired;
 - [ ] .vim folder should be committed to here;    
 - [ ] Go through
-- [ ] test
 - [ ] a good google hosts
 [`Penlight`](https://github.com/stevedonovan/Penlight) [`documentation`](http://stevedonovan.github.io/Penlight/api/manual/01-introduction.md.html)
 
