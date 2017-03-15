@@ -56,6 +56,8 @@ For `.tmux.conf` file, just link the file:
 |xmonitor           |GPU monitor|
 |xgit	            |self git |
 |xparallel.sh       |A tiny parallel framework|
+|thuin name passwd  |login to Tsinghua Campus Net|
+|thuout             |logout from Tsinghua Campus Net|
 
 ## Parallel Soulution
 
