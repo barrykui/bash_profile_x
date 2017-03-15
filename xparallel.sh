@@ -1,5 +1,6 @@
 #!/bin/bash
 # Copyright (c) 2016, BarryKui.
+# Email: xukui.cs@gmail.com
 #
 # bash profile configure
 # Tsinghua University
