@@ -434,5 +434,12 @@ rst2md () {
   pandoc --from=rst --to=markdown $1
 }
 
+## visdom
+startvisdom(){
+  CUDA_VISIBLE_DEVICES=15 python -m visdom.server
+}
+startjupyter(){
+  CUDA_VISIBLE_DEVICES=15 jupyter notebook
+}
 ## macOS 
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
