@@ -1,0 +1,50 @@
+[user]
+	email = xukui.cs@gmail.com
+	name = Kui Xu
+[github]
+	user = Kui Xu
+[color]
+	ui = true
+[alias]
+	br = branch
+	c = commit
+	cm = commit -m
+	co = checkout
+    cob = checkout -b
+	l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s%C(white)- %an, %ar%Creset'
+	lg = log --graph --pretty=oneline --decorate --date=short --abbrev-commit --branches
+	ll = log --stat --abbrev-commit
+	pr = pull --rebase
+	st = status -sb --untracked-files=no
+	cgl = config --global --list
+	cll = config --local --list
+	spull = svn rebase
+	spush = svn dcommit
+	bc = bundle create
+	lsr = ls-remote
+	rv = remote -v
+	ls = ls-files
+    ra = remote add
+    rv = remote -v
+	ss = stash save
+	sl = stash list
+	sd = stash drop
+	sp = stash pop
+	sa = stash apply
+	df = diff
+	dc = diff --cached
+	cfg = config --global
+	rlg = reflog
+	cl = clone
+	vs = version
+[core]
+	#excludesfile = /Users/kuixu/.gitignore
+	pager = less
+[merge]
+	ff = false
+[push]
+	default = simple
+[help]
+	autocorrect = 1
+[interactive]
+	singleKey = true

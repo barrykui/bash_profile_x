@@ -12,6 +12,61 @@ alias vxp='vi $XBASH/.path'
 alias vld='vi $XBASH/.ld_library_path'
 
 ### very basic linux
+# google command
+google () {
+  search=""
+  for term in $@; do
+      search="$search%20$term"
+  done
+  open "http://www.google.com/search?q=$search"
+}
+
+#------------------------------------------------
+# alias
+# -----------------------------------------------
+# Basics
+alias sudo='sudo '
+alias cl='clear'
+alias lv='less'
+
+alias h=history
+alias history='fc -l 1'
+alias md='mkdir -p'
+alias rd=rmdir
+alias d='dirs -v | head -10'
+
+# cd aliases
+- () {
+  cd -
+}
+alias ..='cd ..'
+alias ...='cd ../..'
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
+cd () {
+  if [[ "x$*" = "x..." ]]
+  then
+    cd ../..
+  elif [[ "x$*" = "x...." ]]
+  then
+    cd ../../..
+  elif [[ "x$*" = "x....." ]]
+  then
+    cd ../../../..
+  elif [[ "x$*" = "x......" ]]
+  then
+    cd ../../../../..
+  elif [ -d ~/.autoenv ]
+  then
+    source ~/.autoenv/activate.sh
+    autoenv_cd "$@"
+  else
+    builtin cd "$@"
+  fi
+}
+
 alias ll='ls -lh'
 alias lt='ls -lht'
 alias LS='ls'
@@ -47,7 +102,10 @@ alias tmuxsv='tmux split -v'
 alias cget='curl -O'
 alias gitc='git clone'
 alias jr='java -jar'
-alias open='xdg-open'
+#unalias open='xdg-open'
+alias open='/usr/bin/open'
+alias op='open'
+alias op.='open .'
 
 alias xilog="fc -rnl | head -1 >> ~/x.log"
 alias xclog="cat ~/.xlog"
@@ -68,7 +126,11 @@ xmount(){ echo -e "1. mount;\n \
 }
 
 xcate(){ cat $(which $1);}
-gmail() { curl -u "$1" --silent "https://mail.google.com/mail/feed/atom" | sed -e 's/<\/fullcount.*/\n/' | sed -e 's/.*fullcount>//';}
+#gmail() { curl -u "$1" --silent "https://mail.google.com/mail/feed/atom" | sed -e 's/<\/fullcount.*/\n/' | sed -e 's/.*fullcount>//';}
+# browsing
+alias gcal='open https://www.google.com/calendar/render#g >/dev/null 2>&1'
+alias gmail='open https://mail.google.com/mail/u/0/ >/dev/null 2>&1'
+
 # cd folder
 cde(){ cd $(dirname $(which $1)); }
 lse(){ ls $(dirname $(which $1)); }
@@ -77,6 +139,116 @@ lse(){ ls $(dirname $(which $1)); }
 # tmux attach
 tm(){ tmux attach -t $1; }
 tmprefix(){ tmux unbind C-b;tmux set -g prefix \`;tmux bind-key \` send-prefix;tmux set -g history-limit 1000000;}
+alias tn='tmux new'
+alias tns='tmux new -s'
+
+# ssh
+alias ssh='ssh -C'
+alias sshq='ssh -q'
+
+
+convert_to_gif () {
+  if which ffmpeg &>/dev/null; then
+    ffmpeg -i $1 -pix_fmt rgb8 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > ${1}.gif
+  elif which avconv &>/dev/null; then
+    avconv -i $1 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > ${1}.gif
+  fi
+}
+
+tile_images() {
+  montage $@ -geometry +2+2 $(date +%Y%m%d-%H%M%S)_output.jpg
+}
+
+startbitbucket () {
+    echo 'Username?'
+    read username
+    echo 'Password?'
+    read -s password  # -s flag hides password text
+    echo 'Repo name?'
+    read reponame
+
+    curl --user $username:$password https://api.bitbucket.org/1.0/repositories/ --data name=$reponame --data is_private='true'
+    git remote add origin git@bitbucket.org:$username/$reponame.git
+    git push -u origin --all
+    git push -u origin --tags
+}
+slacker_notify_done () {
+  "$@"
+  local retcode=$?
+  echo "@wkentaro '$@' is done at '$(date)' with exitcode '${retcode}'" | slacker -u wkentaro
+}
+
+
+# ----------------------------------------------------
+# Show Setup
+# ----------------------------------------------------
+show_python () {
+  echo "PYTHON_EXECUTABLE: $(command which python)"
+}
+
+
+show_cuda () {
+  # cuda
+  CUDA_VERSION=$(command nvcc --version | sed -n 4p | sed 's/.*, release .*, V\(.*\)/\1/')
+  echo "CUDA_VERSION: $CUDA_VERSION"
+  # cudnn
+  if [ -e $CUDA_HOME/include/cudnn.h ]; then
+    CUDNN_MAJOR=$(cat $CUDA_HOME/include/cudnn.h | grep '#define CUDNN_MAJOR' | awk '{print $3}')
+
+    CUDNN_MINOR=$(cat $CUDA_HOME/include/cudnn.h | grep '#define CUDNN_MINOR' | awk '{print $3}')
+    CUDNN_PATCHLEVEL=$(cat $CUDA_HOME/include/cudnn.h | grep '#define CUDNN_PATCHLEVEL' | awk '{print $3}')
+    CUDNN_VERSION="$CUDNN_MAJOR.$CUDNN_MINOR.$CUDNN_PATCHLEVEL"
+    echo "CUDNN_VERSION: $CUDNN_VERSION"
+  fi
+}
+
+watch_gpu () {
+  watch -n1 --no-title '''
+  echo "====================================================================================================="
+  cuda-smi
+  echo "====================================================================================================="
+  echo
+  if which nvidia-smi &>/dev/null; then
+    nvidia-smi
+  fi
+  '''
+}
+
+show_dnn () {
+  show_cuda
+  # chainer
+  CHAINER_VERSION=$(python -c "import pkg_resources; print(pkg_resources.get_distribution('chainer').version)" 2>/dev/null)
+  if [ ! -z $CHAINER_VERSION ]; then
+    echo "CHAINER_VERSION: $CHAINER_VERSION"
+  fi
+  # tensorflow
+  TENSORFLOW_VERSION=$(python -c "import pkg_resources; print(pkg_resources.get_distribution('tensorflow').version)" 2>/dev/null)
+  if [ ! -z $TENSORFLOW_VERSION ]; then
+    echo "TENSORFLOW_VERSION: $TENSORFLOW_VERSION"
+  fi
+}
+
+compress_pdf () {
+  if [ ! $# -eq 2 ]; then
+    echo "Usage: compress_pdf INPUT_FILE OUTPUT_FILE"
+  fi
+  local input
+  local output
+  input=$1
+  output=$2
+  gs \
+    -sDEVICE=pdfwrite \
+    -dCompatibilityLevel=1.4 \
+    -dPDFSETTINGS=/default \
+    -dNOPAUSE \
+    -dQUIET \
+    -dBATCH \
+    -dDetectDuplicateImages \
+    -dCompressFonts=true \
+    -r300 \
+    -sOutputFile=${output} \
+    ${input}
+}
 
 
 ## nvidia-smi
@@ -176,7 +348,11 @@ netlogin(){ xdg-open "http://net.tsinghua.edu.cn"; }
 
 # THU login
 thuin(){
-  python $XBASH/thulogin/in.py $1 $2
+  echo 'Username?'
+  read username
+  echo 'Password?'
+  read -s password  # -s flag hides password text
+  python $XBASH/thulogin/in.py $username $password
 }
 thuout(){
   python $XBASH/thulogin/out.py
@@ -248,6 +424,15 @@ netlist(){ networksetup -listnetworkserviceorder;}
 #XLD=$(/usr/bin/awk '$0!~/^#/{print}' $XBASH/.ld_library_path|/usr/bin/awk '!/^$/&&!a[$0]++'|/usr/bin/awk 'BEGIN{a="/bin";}{a=a":"$0}END{print a}')
 
 #export LD_LIBRARY_PATH=$XLD
+# ----------------------------------------------------
+# pandoc
+# ----------------------------------------------------
+md2rst () {
+  pandoc --from=markdown --to=rst $1
+}
+rst2md () {
+  pandoc --from=rst --to=markdown $1
+}
 
 ## macOS 
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
