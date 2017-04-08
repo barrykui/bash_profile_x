@@ -118,6 +118,10 @@ lc() { ls $1|wl; }
 topg() { top -b -n 1|grep $1|wl; }
 # 
 
+# FileSearch
+f() { find . -iname "*$1*" ${@:2} }
+r() { grep "$1" ${@:2} -R . }
+
 ## mount
 xmount(){ echo -e "1. mount;\n \
     2. find the device(/dev/disk3s1) and the mount point(/Volumes/udisk) \n \
