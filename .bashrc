@@ -125,6 +125,9 @@ xmount(){ echo -e "1. mount;\n \
     4. sudo mount -t ntfs -o rw,nobrowse /dev/disk3s1 /Users/kuixu/udisk \n";
 }
 
+# LSF bsub
+xbque(){ bqueues|awk 'NR==1||$0~/^Z-/'; }
+
 xcate(){ cat $(which $1);}
 #gmail() { curl -u "$1" --silent "https://mail.google.com/mail/feed/atom" | sed -e 's/<\/fullcount.*/\n/' | sed -e 's/.*fullcount>//';}
 # browsing
@@ -324,6 +327,7 @@ renamedir(){
 }
 
 # bioinformatics tools
+lepdb(){ less $(pdbpath $1); }
 countfas() { awk 'BEGIN{l=0;}{if(substr($1,0,1)==">"){if(l!=0){ORS="\n";print l;};l=0;ORS="\t";print $1}else{l+=length($1)}}END{ORS="\n";print l;}' $1; }
 xcut() { from1=$1;to2=$2;file=$3;awk 'BEGIN{ORS="\t"}{for(i="'$from1'";i<="'$to2'";i++){if(i=="'$to2'")ORS="\n";print $i}}' $file;}
 ## get lincRNA from gff file 
@@ -441,5 +445,8 @@ startvisdom(){
 startjupyter(){
   CUDA_VISIBLE_DEVICES=15 jupyter notebook
 }
+
+
+
 ## macOS 
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"

@@ -1,0 +1,2 @@
+#!/bin/bash
+bqueues|awk 'NR==1||$0~/^Z-/'
