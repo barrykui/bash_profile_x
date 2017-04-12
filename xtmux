@@ -23,7 +23,7 @@ tmux new-session -d -s $SESSION
  
 # 0 - IRC
 tmux set-window-option -t $SESSION -g automatic-rename off
-tmux new-window    -t $SESSION:0 -k -n irc # weechat-curses
+tmux new-window    -t $SESSION:0 -k -n em246 # weechat-curses
 tmux set-window-option -t $SESSION:0 automatic-rename off
 #tmux set-window-option -t $SESSION:0 monitor-content $IRC_NICK
 #tmux rename-window -t $SESSION:0 -n irc
@@ -50,16 +50,18 @@ tmux set-window-option -t $SESSION:0 automatic-rename off
 
 split6(){
 	n=$1
-	tmux select-pane -t $n
-	tmux split -l 12 's66lx'
-	tmux select-pane -t $n
-	tmux split -l 12 's66lx'
-	tmux select-pane -t $n
-	tmux split -l 12 's66lx'
-	tmux select-pane -t $n
-	tmux split -l 12 's66lx'
-	tmux select-pane -t $n
-	tmux split -l 12 's66lx'
+	for i in `seq 5`
+	do
+		tmux select-pane -t $n
+		tmux split -l 12 
+	done
+}
+login(){
+	id=$1
+	tmux send-keys "s66lx" C-m
+	tmux send-keys "semx $id" C-m
+	tmux send-keys "usr/bin/psxg pychipdb2mrc.py" C-m
+
 }
  
 # all done. select starting window and get to work
@@ -67,19 +69,25 @@ split6(){
 # if you don't use ssh keys
 #tmux set-option remain-on-exit on
 tmux select-window -t $SESSION:0
-tmux split-window C-z "exec s66lx" C-m
-#tmux select-pane -t 1
-#tmux split-window -h  's66lx'
-#tmux select-pane -t 3
-#tmux split-window -h 's66lx'
+tmux split-window -h 
+tmux select-pane -t 1
+tmux split-window -h 
+tmux select-pane -t 3
+tmux split-window -h 
 
-#plit6 1;
+split6 1;
 
-#split6 7;
+split6 7;
 
-#split6 13;
+split6 13;
 
-#split6 19;
+split6 19;
+
+for i in `seq 24`
+do
+	tmux select-pane -t $i
+	login $i
+done
 #tmux select-layout even-vertical
 
 
