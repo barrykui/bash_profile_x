@@ -58,9 +58,11 @@ split6(){
 }
 login(){
 	id=$1
-	tmux send-keys "s66lx" C-m
+	tmux send-keys "s66l" C-m
+	tmux send-keys "ssh loginview03" C-m
 	tmux send-keys "semx $id" C-m
 	tmux send-keys "usr/bin/psxg pychipdb2mrc.py" C-m
+	#tmux send-keys "usr/bin/htop" C-m
 
 }
  
