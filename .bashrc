@@ -120,7 +120,8 @@ topg() { top -b -n 1|grep $1|wl; }
 
 # FileSearch
 f() { find . -iname "*$1*" ${@:2} }
-r() { grep "$1" ${@:2} -R . }
+
+gr() { grep "$1" ${@:2} -R . }
 
 ## mount
 xmount(){ echo -e "1. mount;\n \
@@ -411,14 +412,14 @@ piptf11(){
     CUDA_VISIBLE_DEVICES=3 python /data/kuixu/exper/deeprbp/lstm/imdb_cnn.py
 }
 
-
+'''
 updlan(){
   wget -O lantern-installer-beta.dmg  "https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta.dmg";
   /usr/bin/open lantern-installer-beta.dmg
   #rm lantern-installer-beta.dmg
 }
 ddl(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk dl-docker:cpu bash; }
-dfdl(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk floydhub/dl-docker:cpu bash;
+dfdl(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk floydhub/dl-docker:cpu bash;}
 dcaffe(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk caffe:cpu bash; }
 
 ### network
@@ -453,4 +454,4 @@ startjupyter(){
 
 
 ## macOS 
-alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+#alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
