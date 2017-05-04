@@ -2,3 +2,6 @@
 echo "|=============================================================================|";
 free -h;
 nvidia-smi|awk '$2=="Processes:"{aa=1;}{if(aa==1)print $0}'; 
+dir="/home/gpu246/software/caffemodels/deepmap.torch_multifile/logs/"
+dir="/home/scs4850/kuixu/exper/deepmap.torch_multifile/logs"
+ls -tr $dir|tail -1|awk -v d=$dir '{system("tail -10 "d"/"$0)}'
