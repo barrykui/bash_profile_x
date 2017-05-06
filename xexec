@@ -2,5 +2,6 @@
 #XBASH="/Share/home/zhangqf6/xukui/xbash"
 t=`date +%Y%m%d%H%M%S`
 $@ |tee $t.o
-a=$(tail -n 20 ${t}.o)
-$XBASH/xmail/xmail -u xukui@xukui.cn -s "$@" -m $a
+a=`tail -n 20 ${t}.o`
+echo $a
+$XBASH/xmail/xmail -u xukui.cs@gmail.com -s "$@" -m "$a"
