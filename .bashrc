@@ -119,9 +119,9 @@ topg() { top -b -n 1|grep $1|wl; }
 # 
 
 # FileSearch
-f() { find . -iname "*$1*" ${@:2} }
+#f() { find . -iname "*$1*" ${@:2} }
 
-gr() { grep "$1" ${@:2} -R . }
+#gr() { grep "$1" ${@:2} -R . }
 
 ## mount
 xmount(){ echo -e "1. mount;\n \
@@ -412,7 +412,29 @@ piptf11(){
     CUDA_VISIBLE_DEVICES=3 python /data/kuixu/exper/deeprbp/lstm/imdb_cnn.py
 }
 
-'''
+dlversion(){
+    echo "=== Tensorflow Version ==="
+    python -c 'import tensorflow as tf; print(tf.__version__)'   
+    echo "=== Theano Version ==="
+    python -c 'import theano as K; print(K.__version__)'   
+    echo "=== Lasagne Version ==="
+    python -c 'import lasagne as K; print(K.__version__)'   
+    echo "=== Keras Version ==="
+    python -c 'import keras as K; print(K.__version__)'   
+}
+
+kerasswitch(){
+    if [ -e ~/.keras/keras.json.tf ]; then
+       mv ~/.keras/keras.json ~/.keras/keras.json.th
+       mv ~/.keras/keras.json.tf ~/.keras/keras.json
+    else
+       mv ~/.keras/keras.json ~/.keras/keras.json.tf
+       mv ~/.keras/keras.json.th ~/.keras/keras.json
+    fi
+}
+
+
+
 updlan(){
   wget -O lantern-installer-beta.dmg  "https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta.dmg";
   /usr/bin/open lantern-installer-beta.dmg
