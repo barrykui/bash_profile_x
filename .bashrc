@@ -282,6 +282,7 @@ nfile(){ ls $1|wc -l; }
 nfilet(){ while(true) do nfile $1;sleep 3;done }
 o(){ while(true) do echo "=============";$1;sleep 1;done }
 o5(){ while(true) do echo "=============";$1;sleep 5;done }
+on(){ while(true) do echo "=============";$2;sleep $1;done }
 
 #linenum file
 sedxk(){ head -$1 $2 |tail -1;}
@@ -414,22 +415,24 @@ piptf11(){
 
 dlversion(){
     echo "=== Tensorflow Version ==="
-    python -c 'import tensorflow as tf; print(tf.__version__)'   
+    python -c 'import tensorflow as tf; print(tf.__version__);print tf.__file__'   
     echo "=== Theano Version ==="
-    python -c 'import theano as K; print(K.__version__)'   
+    python -c 'import theano as K; print(K.__version__);print K.__file__'   
     echo "=== Lasagne Version ==="
-    python -c 'import lasagne as K; print(K.__version__)'   
+    python -c 'import lasagne as K; print(K.__version__);print K.__file__'   
     echo "=== Keras Version ==="
-    python -c 'import keras as K; print(K.__version__)'   
+    python -c 'import keras as K; print(K.__version__);print K.__file__'   
 }
 
 kerasswitch(){
     if [ -e ~/.keras/keras.json.tf ]; then
        mv ~/.keras/keras.json ~/.keras/keras.json.th
        mv ~/.keras/keras.json.tf ~/.keras/keras.json
+       echo "Keras Backend: Tensorflow"
     else
        mv ~/.keras/keras.json ~/.keras/keras.json.tf
        mv ~/.keras/keras.json.th ~/.keras/keras.json
+       echo "Keras Backend: Theano"
     fi
 }
 
