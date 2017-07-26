@@ -1,3 +1,16 @@
+#!/usr/bin/env python                                                                                                                                                                                                                                       
+"""
+# Author: XU Kui
+# Created Time : Tue 23 May 2016 10:04:31 PM CST
+ 
+# File Name: in.py
+# Description: Login to tsinghua
+    
+# Example: 
+1. Login to the net.tsinghua.edu.cn
+ python in.py your_account your_passwd net
+"""
+
 import os
 import sys
 import urllib
