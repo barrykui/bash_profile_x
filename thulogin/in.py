@@ -27,7 +27,6 @@ def getReq(url, data):
     the_page = response.read()
     return the_page, response.info().getheader('Location')
 
-    #print the_page
 
 def logininfo(name, passwd):
     url = 'https://info.tsinghua.edu.cn/Login'
