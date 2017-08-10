@@ -65,7 +65,19 @@ For `.tmux.conf` file, just link the file:
 - [`Concu`](https://github.com/barrykui/Concu)
 - [`GNU Parallel`](https://www.gnu.org/software/parallel/)
 
+## Tsinghua Tuna Mirror
 
+- [`Anaconda`](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)
+``` shell
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+    conda config --set show_channel_urls yes
+```
+- [`pip`] (https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
+``` shell
+    $ vi ~/.pip/pip.conf 
+    [global]
+    index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+```
 
 ##### TODO
 - [x] xbash not work, bug should be fired;
