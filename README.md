@@ -59,6 +59,13 @@ For `.tmux.conf` file, just link the file:
 |thuin name passwd  |login to Tsinghua Campus Net|
 |thuout             |logout from Tsinghua Campus Net|
 
+
+## CUDNN
+
+``` shell
+    ./xcudnn ~/usr/cuda /usr/local/cuda-8.0/
+```
+
 ## Parallel Soulution
 
 - [`xparallel.sh`](https://github.com/barrykui/xbash/blob/master/xparallel.sh)

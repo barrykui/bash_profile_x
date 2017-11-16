@@ -1,6 +1,13 @@
 #!/bin/bash
+###
+#
+# cmd: ./xcudnn ~/usr/cuda /usr/local/cuda-8.0/
+#
 cudnn=$1
 cuda=$2
+#if [ $cudnn eq "" ] then
+#   exit(1)
+#fi
 echo "copy include."
 sudo cp $cudnn/include/cudnn.h $cuda/include/
 echo "copy lib64."
