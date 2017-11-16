@@ -1,0 +1,11 @@
+#!/bin/bash
+cudnn=$1
+cuda=$2
+echo "copy include."
+sudo cp $cudnn/include/cudnn.h $cuda/include/
+echo "copy lib64."
+sudo rm $cuda/lib64/libcudnn.so
+sudo cp $cudnn/lib64/* $cuda/lib64/
+sudo ldconfig
+
+
