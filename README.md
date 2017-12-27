@@ -76,14 +76,14 @@ For `.tmux.conf` file, just link the file:
 
 - [`Anaconda`](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)
 ``` shell
-    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-    conda config --set show_channel_urls yes
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --set show_channel_urls yes
 ```
 - [`pip`](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
 ``` shell
-    $ vi ~/.pip/pip.conf 
-    [global]
-    index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+$ vi ~/.pip/pip.conf 
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 - [`Tensorflow`](https://mirrors.tuna.tsinghua.edu.cn/help/tensorflow/)
 
