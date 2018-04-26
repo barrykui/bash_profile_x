@@ -119,8 +119,9 @@ topg() { top -b -n 1|grep $1|wl; }
 # 
 
 # FileSearch
-f() { find . -iname "*$1*" ${@:2} }
-r() { grep "$1" ${@:2} -R . }
+#f() { find . -iname "*$1*" ${@:2} }
+
+#gr() { grep "$1" ${@:2} -R . }
 
 ## mount
 xmount(){ echo -e "1. mount;\n \
@@ -281,6 +282,7 @@ nfile(){ ls $1|wc -l; }
 nfilet(){ while(true) do nfile $1;sleep 3;done }
 o(){ while(true) do echo "=============";$1;sleep 1;done }
 o5(){ while(true) do echo "=============";$1;sleep 5;done }
+on(){ while(true) do echo "=============";$2;sleep $1;done }
 
 #linenum file
 sedxk(){ head -$1 $2 |tail -1;}
@@ -411,6 +413,30 @@ piptf11(){
     CUDA_VISIBLE_DEVICES=3 python /data/kuixu/exper/deeprbp/lstm/imdb_cnn.py
 }
 
+dlversion(){
+    echo "=== Tensorflow Version ==="
+    python -c 'import tensorflow as tf; print(tf.__version__);print tf.__file__'   
+    echo "=== Theano Version ==="
+    python -c 'import theano as K; print(K.__version__);print K.__file__'   
+    echo "=== Lasagne Version ==="
+    python -c 'import lasagne as K; print(K.__version__);print K.__file__'   
+    echo "=== Keras Version ==="
+    python -c 'import keras as K; print(K.__version__);print K.__file__'   
+}
+
+kerasswitch(){
+    if [ -e ~/.keras/keras.json.tf ]; then
+       mv ~/.keras/keras.json ~/.keras/keras.json.th
+       mv ~/.keras/keras.json.tf ~/.keras/keras.json
+       echo "Keras Backend: Tensorflow"
+    else
+       mv ~/.keras/keras.json ~/.keras/keras.json.tf
+       mv ~/.keras/keras.json.th ~/.keras/keras.json
+       echo "Keras Backend: Theano"
+    fi
+}
+
+
 
 updlan(){
   wget -O lantern-installer-beta.dmg  "https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta.dmg";
@@ -418,7 +444,7 @@ updlan(){
   #rm lantern-installer-beta.dmg
 }
 ddl(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk dl-docker:cpu bash; }
-dfdl(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk floydhub/dl-docker:cpu bash;
+dfdl(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk floydhub/dl-docker:cpu bash;}
 dcaffe(){ docker run -it -p 8888:8888 -p 6006:6006 -v $HOME:/root/xk caffe:cpu bash; }
 
 ### network
@@ -453,4 +479,4 @@ startjupyter(){
 
 
 ## macOS 
-alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+#alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"

@@ -59,13 +59,33 @@ For `.tmux.conf` file, just link the file:
 |thuin name passwd  |login to Tsinghua Campus Net|
 |thuout             |logout from Tsinghua Campus Net|
 
+
+## CUDNN
+
+``` shell
+    ./xcudnn ~/usr/cuda /usr/local/cuda-8.0/
+```
+
 ## Parallel Soulution
 
 - [`xparallel.sh`](https://github.com/barrykui/xbash/blob/master/xparallel.sh)
 - [`Concu`](https://github.com/barrykui/Concu)
 - [`GNU Parallel`](https://www.gnu.org/software/parallel/)
 
+## Tsinghua Tuna Mirror
 
+- [`Anaconda`](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)
+``` shell
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --set show_channel_urls yes
+```
+- [`pip`](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
+``` shell
+$ vi ~/.pip/pip.conf 
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+```
+- [`Tensorflow`](https://mirrors.tuna.tsinghua.edu.cn/help/tensorflow/)
 
 ##### TODO
 - [x] xbash not work, bug should be fired;
@@ -82,4 +102,4 @@ This tools are frequently used in our daily life, lots of my time are saved by u
 
 
 
-
+## Ha
