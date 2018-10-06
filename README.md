@@ -81,10 +81,7 @@ conda config --set show_channel_urls yes
 ```
 - [`pip`](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
 ``` shell
-$ mkdir ~/.pip
-$ vi ~/.pip/pip.conf 
-[global]
-index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+$ mkdir ~/.pip; echo -e "[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple" > ~/.pip/pip.conf
 ```
 - [`Tensorflow`](https://mirrors.tuna.tsinghua.edu.cn/help/tensorflow/)
 
