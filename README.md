@@ -37,6 +37,12 @@ For `.tmux.conf` file, just link the file:
     $ git clone https://github.com/barrykui/.tmux.git
     $ ln -s ~/xbash/.tmux/.tmux.conf ~/.tmux.conf
 
+## Fix https certs
+
+```
+curl https://get.acme.sh | sh
+sudo ./.acme.sh/acme.sh --issue --force -d example.com -w /path/to/webdir
+```
 
 ## Tools
 
