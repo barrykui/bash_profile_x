@@ -95,6 +95,7 @@ $ mkdir ~/.pip; echo -e "[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn
 ##  Installing oh-my-zsh Offline
 
  - 0. Before start, install git and zsh
+ 
 ```
 # for installing on Ubuntu
 sudo apt-get install zsh
