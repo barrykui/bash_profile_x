@@ -91,6 +91,38 @@ $ mkdir ~/.pip; echo -e "[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn
 ```
 - [`Tensorflow`](https://mirrors.tuna.tsinghua.edu.cn/help/tensorflow/)
 
+
+##  Installing oh-my-zsh Offline
+
+ - 0. Before start, install git and zsh
+```
+# for installing on Ubuntu
+sudo apt-get install zsh
+
+# for installing from source
+http://zsh.sourceforge.net/Arc/source.html
+```
+
+- 1. Go to the repository and download the zip file
+https://github.com/robbyrussell/oh-my-zsh
+
+Open the zip file and extract to your home folder, and rename to .oh-my-zsh
+oh-my-zsh-master -> ~/.oh-my-zsh
+
+- 2. Save the file [install-oh-my-zsh.sh](https://gist.github.com/hewerthomn/65bb351bf950470f6c9e6aba8c0c04f1#file-install-oh-my-zsh-sh) to your home folder, like ~/install-oh-my-zsh.sh
+
+- 3. Give permission to execute
+
+```
+chmod +x install-oh-my-zsh.sh
+
+# Run the script
+./install-oh-my-zsh.sh
+```
+
+> - copy&paste from [hewerthomn](https://github.com/hewerthomn)
+
+
 ##### TODO
 - [x] xbash not work, bug should be fired;
 - [ ] .vim folder should be committed to here;    
